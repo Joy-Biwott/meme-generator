@@ -5,6 +5,9 @@ body {
   font-family: "Karla", sans-serif;
   margin: 0;
 }
+main {
+  padding: 36px;
+}
 
 .header {
   display: flex ;
@@ -21,36 +24,40 @@ body {
   margin-left: 5px;
   margin-right: 5px;
 }
-
-.react--course {
-  position: absolute;
-  right: 10px;
+.header-title {
+  font-size: 1.25rem;
+  margin-right: auto;
 }
 
-.input {
-  /* margin-left: 10px; */
-  margin-top: 40px;
-  padding: auto;
-  /* margin-bottom: 20px; */
-  height: 40px;
-  border-radius: 5px;
+.header--project {
+  font-size: 0.75rem;
+  font-weight: 500;
 }
 
-.input-2 {
-  margin-left: 20%;
-  /* right: 10px; */
-}
 
-form {
+
+.form {
+  display: grid;
+  grid-template: 40px 40px / 1fr 1fr;
+  gap: 17px;
   text-align: center;
-  max-width: 90%;
+  /*max-width: 90%; */
 }
 
-button {
-  height: 40px;
-  width: 100%;
-  flex-shrink: 0;
-  margin-left: 20px;
-  background-color: #672280;
+.form--input {
+  font-family: "Karla", sans-serif;
+  border-radius: 5px;
+  border: 1px solid #D5D4D8;
+  text-indent : 5px;
+}
 
+.form--button {
+  grid-column: 1 / -1;
+  font-family: 'Karla', sans-serif;
+  border-radius: 5px;
+  background: linear-gradient(90.41deg, #711F8D 1.14%, #A818DA 100%);
+  color: white;
+  border: none;
+  cursor: pointer;
+  width: 100%;
 }
