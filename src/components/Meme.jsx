@@ -1,5 +1,6 @@
 import React from "react";
-import memes from "../memesData.js";
+// import memes from "../memesData.js";
+import memesData from "../memesData.js";
 
 /**
      * Challenge: Save the random meme URL in state
@@ -12,14 +13,22 @@ import memes from "../memesData.js";
      *   src to the new `memeImage` state you created
      */
 
-console.log(memes)
 export default function Meme (){
-    const [image, setImage] = React.useState("")
+    // const [image, setImage] = React.useState("https://i.imgflip.com/1bhw.jpg")
+    const [meme, setMeme] = React.useState({
+        topText: "",
+        bottomText: "",
+        url: "https://i.imgflip.com/1bhw.jpg"
+    })
+    const [allMemeImages, setAllMemeImages] = React.useState(memesData)
     function getMemeImage(){
-        const memesArr= memes.data.memes
+        const memesArr= allMemeImages.data.memes
         const randomNum = Math.floor(Math.random() * memesArr.length)
         const url = memesArr[randomNum].url
-        setImage(url)
+        setMeme(prevMeme => ({
+            ...prevMeme,
+            url: url
+        }))
         
     }
     return (
@@ -36,7 +45,7 @@ export default function Meme (){
                     placeholder="Bottom text"
                    />                
                 <button onClick={getMemeImage} className="form--button">Get a new meme image 🖼</button>
-                <img src={image}  alt="meme" className="meme--image"/>
+                <img src={meme.url}  alt="meme" className="meme--image"/>
             </div>
         </main>
     )
