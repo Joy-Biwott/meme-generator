@@ -8,7 +8,12 @@ export default function Meme (){
         bottomText: "",
         url: "https://i.imgflip.com/1bhw.jpg"
     })
-    const [allMemeImages, setAllMemeImages] = React.useState(memesData)
+    const [allMemes, setAllMemes] = React.useState(memesData)
+    React.useEffect(()=> {
+        fetch("https://api.imgflip.com/get_memes")
+        .then(r => r.json)
+        .then(data => setAllMemes(data.data.memes))
+    }, [])
     // function getMemeImage(){
     //     const memesArr= allMemeImages.data.memes
     //     const randomNum = Math.floor(Math.random() * memesArr.length)
@@ -19,7 +24,7 @@ export default function Meme (){
     //     }))
     function handleSubmit(e){
         e.preventDefault()
-        const memesArr= allMemeImages.data.memes
+        const memesArr= allMemes.data.memes
         const randomNum = Math.floor(Math.random() * memesArr.length)
         const url = memesArr[randomNum].url
         setMeme(prevMeme => ({
